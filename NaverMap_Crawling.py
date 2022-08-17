@@ -23,20 +23,24 @@ search = driver.find_element(By.CLASS_NAME, "input_search")
 search.send_keys('홍대 맛집')
 search.send_keys(Keys.ENTER)
 '''
-
+#링크를 네이버지도 메인으로 지정하고 검색어를 코드에서 입력 or 이미 검색을 실행한 링크 바로 입력
 
 time.sleep(2)
 '''
-expand_button = driver.find_element(By.CSS_SELECTOR, "button.btn_zoom_in.ng-tns-c167-7")
+zoom_in = driver.find_element(By.CSS_SELECTOR, "button.btn_zoom_in.ng-tns-c167-7")
+#지도 확대 버튼 클릭횟수 조절
 for _ in range(1):
-    expand_button.click()
+    zoom_in.click()
+zoom_out = driver.find_element(By.CSS_SELECTOR, "button.btn_zoom_out.ng-tns-c167-7")
+#지도 축소 버튼 클릭횟수 조절
+for _ in range(2):
+    zoom_out.click()
 time.sleep(1)
+#지도 zoom조절 후 재검색
 research_button = driver.find_element(By.CSS_SELECTOR, "button.btn_research.auto.ng-star-inserted")
 research_button.click()
-
 time.sleep(2)
 '''
-
 
  
 frame = driver.find_element(By.CSS_SELECTOR, "iframe#searchIframe")

@@ -28,11 +28,12 @@ search.send_keys(Keys.ENTER)
 time.sleep(2)
 
 '''
+
+
+'''
 zoom_in = driver.find_element(By.CSS_SELECTOR, "button.btn_zoom_in.ng-tns-c167-7")
 for _ in range(1):
     zoom_in.click()
-
-'''
 zoom_out = driver.find_element(By.CSS_SELECTOR, "button.btn_zoom_out.ng-tns-c167-7")
 for _ in range(2):
     zoom_out.click()

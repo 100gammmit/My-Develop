@@ -6,6 +6,7 @@
 *.bin
 *.properties
 *.probe
+*.class
 /gradlew
 /gradlew.bat
 /settings.gradle

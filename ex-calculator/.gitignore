@@ -1,16 +1,2 @@
 # Default ignored files
-*.lock
-*.xml
-*.bin
-*.jar
-*.bin
-*.properties
-*.probe
-*.class
-*.html
-*.css
-*.js
-*.idx
-/gradlew
-/gradlew.bat
-/settings.gradle
+*

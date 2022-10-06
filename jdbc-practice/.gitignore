@@ -11,6 +11,7 @@
 *.css
 *.js
 *.idx
+*.sql
 /gradlew
 /gradlew.bat
 /settings.gradle

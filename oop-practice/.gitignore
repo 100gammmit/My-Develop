@@ -1,0 +1,12 @@
+# Default ignored files
+*.lock
+*.xml
+*.bin
+*.jar
+*.bin
+*.properties
+*.probe
+*.class
+/gradlew
+/gradlew.bat
+/settings.gradle

@@ -1,0 +1,4 @@
+*.DS_Store
+ex-calculator/src/main/java/org/example/WebApplicationServerLauncher.java
+ex-calculator/src/main/java/org/example/CalculatorServlet.java
+*.gitignore

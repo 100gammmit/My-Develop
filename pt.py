@@ -7,7 +7,7 @@ for i in range(1000):
     for j in range(1000):
         ad[i].append(randrange(1, 100))
         bd[i].append(randrange(1, 100))
-print(ad, bd)
+
 with open('a.dat', 'w') as file:
     for i in range(1000):      
         for a in ad[i]:

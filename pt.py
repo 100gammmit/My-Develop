@@ -1,19 +1,5 @@
 import sys
 
-def binary_search(li, target):
-    start = 0
-    end = len(li) -1
-
-    while start <= end:
-        middle = (start+end)//2
-        if li[middle]==target:
-            return middle
-        elif li[middle]>target:
-            end = middle - 1
-        else:
-            start = middle + 1
-    return -1
-
 def minpo(target):
     i = 1
     while target >= i:
@@ -27,20 +13,34 @@ def maxpo(target):
 
 def makebuddy(mmr, target):
     start = 0
+    alloc_st = 0
     while 1:
-        if maxpo(target) in mmr:
-            return mmr.index(target)
-        else:
-            if maxpo(target) > mmr[start]:
-                    start+=1
-                    continue
-            mmr[start] = mmr[start]//2
-            mmr.insert(start, mmr[start])
+        for i in mmr:
+            if target == i[0] and i[1] == 1:
+                for j in range(0, mmr.index(i)):
+                    alloc_st += mmr[j][0]
+                i[1] = 0
+            
+                return [alloc_st, alloc_st+i[0]-1]
+        try:
+            if mmr[start][1] == 0 or target > mmr[start][0]:
+                start+=1
+                continue
+            mmr[start][0] = mmr[start][0]//2
+            mmr.insert(start, [mmr[start][0], 1])
+        except:
+            return -1
+
+        
+        
 
 lst = list(map(int, sys.stdin.readline().split()))
-memory = [minpo(lst.pop(0))]
-idx=0
+memory = [[minpo(lst.pop(0)), 1]]
+
 for i in lst:
-    print(makebuddy(memory, i))
-    print(memory)
-    idx+=1
+    alloc_mmr = makebuddy(memory, maxpo(i))
+    if alloc_mmr == -1:
+        print("Sorry, failed to allocate memory")
+    else:
+        print(f"Memory from {alloc_mmr[0]} to {alloc_mmr[1]} allocated")
+    #print(memory)

@@ -1,15 +1,18 @@
 package com.hello.spring.order;
 
 import com.hello.spring.discount.DiscountPolicy;
-import com.hello.spring.discount.FixDiscountPolicy;
 import com.hello.spring.member.Member;
 import com.hello.spring.member.MemberRepository;
-import com.hello.spring.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private MemberRepository memberRepository = new MemoryMemberRepository();  // 주문한 멤버를 찾기 위하여 선언
-    private DiscountPolicy discountPolicy = new FixDiscountPolicy();  // 해당 멤버의 할인 정책을 확인하기 위하여 선언
+    private final MemberRepository memberRepository;  // 주문한 멤버를 찾기 위하여 선언
+    private final DiscountPolicy discountPolicy;  // 해당 멤버의 할인 정책을 확인하기 위하여 선언
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     /**
      * 주문 생성 함수

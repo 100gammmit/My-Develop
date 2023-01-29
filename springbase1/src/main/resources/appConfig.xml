@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--Xml을 사용한 DI설정 파일 memberService의 구현 객체를 정의하고 주입함-->
+    <bean id="memberService" class = "com.hello.spring.member.MemberServiceImpl">   <!--memberService의 구현클래스 정의-->
+        <constructor-arg name="memberRepository" ref="memberRepository"/>   <!--MemberServiceImpl을 구체화 시키는데 필요한 인터페이스 정의 정의-->
+    </bean>
+    <bean id="memberRepository" class="com.hello.spring.member.MemoryMemberRepository"/>    <!--위에서 사용하는 memberRepository에 대한 구현 클래스 정의-->
+
+    <bean id="orderService" class="com.hello.spring.order.OrderServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository"/>
+        <constructor-arg name="discountPolicy" ref="disCountPolicy"/>
+    </bean>
+    <bean id="disCountPolicy" class="com.hello.spring.discount.RateDiscountPolicy"/>
+</beans>

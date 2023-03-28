@@ -31,3 +31,46 @@
   - 최초로 실행된 후 fixed.. 주기별로 매서드 실행
   - (initialDelay = 1000, fixedRate = 5000) : 빌드 후 1초뒤에 실행, 그뒤로 5초마다 재실행
 
+
+## SourceCode
+``` java 
+@Scheduled(cron = "00 53 18 * * *")
+    public void SchedulingTest() throws InterruptedException {
+        System.out.println("\n");
+        System.out.println("=======================================");
+        System.out.println("[ArticleService] : [UpdateArticle]");
+        System.out.println("[Started] : " + getNowDateTime24());
+        System.out.println("=======================================");
+        System.out.println("\n");
+
+        crawlAllArticleWithCategory();
+
+        System.out.println("\n");
+        System.out.println("=======================================");
+        System.out.println("[ArticleService] : [UpdateArticle]");
+        System.out.println("[Ended] : " + getNowDateTime24());
+        System.out.println("=======================================");
+        System.out.println("\n");
+    }
+```
+
+getNowDateTime24() : String타입으로 현재 시간을 "yyyy.MM.dd kk:mm:ss E요일" 형식으로 포멧하여 반환하는 매서드
+
+crawlAllArticleWithCategory() : 실행할 크롤링 Task
+
+## 실행 결과
+```
+=======================================
+[ArticleService] : [UpdateArticle]
+[Started] : 2023.03.28 18:53:00 화요일
+=======================================
+
+Hibernate:
+    select
+        .........
+
+=======================================
+[ArticleService] : [UpdateArticle]
+[Ended] : 2023.03.28 18:54:24 화요일
+=======================================
+```

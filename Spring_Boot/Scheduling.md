@@ -54,9 +54,13 @@
     }
 ```
 
-getNowDateTime24() : String타입으로 현재 시간을 "yyyy.MM.dd kk:mm:ss E요일" 형식으로 포멧하여 반환하는 매서드
+getNowDateTime24() 
+- String타입으로 현재 시간을 "yyyy.MM.dd kk:mm:ss E요일" 형식으로 포멧하여 반환하는 매서드
 
-crawlAllArticleWithCategory() : 실행할 크롤링 Task
+crawlAllArticleWithCategory() 
+- 실행할 크롤링 Task
+  
+</br>
 
 ## 실행 결과
 ```
@@ -68,7 +72,10 @@ crawlAllArticleWithCategory() : 실행할 크롤링 Task
 Hibernate:
     select
         .........
-
+        ........
+        ...........
+        .........
+        
 =======================================
 [ArticleService] : [UpdateArticle]
 [Ended] : 2023.03.28 18:54:24 화요일

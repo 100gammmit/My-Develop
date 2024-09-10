@@ -1,4 +1,4 @@
-package hello.spring.controller;
+package hello.spring.repository;
 
 import hello.spring.domain.Member;
 import hello.spring.repository.MemberRepository;

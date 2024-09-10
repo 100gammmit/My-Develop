@@ -40,7 +40,7 @@ memory = [[1, minpo(lst.pop(0))]]
 for i in lst:
     alloc_mmr = allocate(memory, maxpo(i))
     if alloc_mmr == -1:
-        print("Sorry, failed to allocate memory")
+        print 'Sorry, failed to allocate memory'
     else:
-        print(f"Memory from {alloc_mmr[0]} to {alloc_mmr[1]} allocated")
+        print 'Memory from %d to %d allocated' %(alloc_mmr[0], alloc_mmr[1])
     #print(memory)

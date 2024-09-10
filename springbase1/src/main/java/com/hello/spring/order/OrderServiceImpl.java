@@ -6,6 +6,11 @@ import com.hello.spring.member.MemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
     private final MemberRepository memberRepository;  // 주문한 멤버를 찾기 위하여 선언
     private final DiscountPolicy discountPolicy;  // 해당 멤버의 할인 정책을 확인하기 위하여 선언
 

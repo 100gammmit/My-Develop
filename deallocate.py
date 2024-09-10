@@ -49,9 +49,18 @@ def dellocate(mmr, alloc_mmr, start):
                         tmp -= 1
     return -1
 
-def coalesce(mmr, idx):
-    mmr[idx][1] *= 2
-    mmr.pop(idx+1)
+def coalesce():
+    adrs = 0
+    if len(memory) <= 1:
+        return 0
+    for j in range(0, len(memory)-1):
+        if memory[j][1] == memory[j+1][1] and memory[j][0] == 1 and memory[j+1][0] == 1:
+            print ('Coalescing of blocks starting at %d and %d was done' %(adrs, adrs+memory[j][1]))
+            memory[j][1] *= 2
+            memory.pop(j+1)
+            coalesce()
+        adrs+=memory[j][1]
+    
 
 ipt_lst = list(map(int, sys.stdin.readline().split()))
 lst=[]
@@ -67,23 +76,16 @@ for i in lst:
     if i[0] == 1:
         alloc = allocate(memory, maxpo(i[1]))
         if alloc == -1:
-            print("Sorry, failed to allocate memory")
+            print ('Sorry, failed to allocate memory')
         else:
             alloc_mmr.append(alloc)
-            print(f"Memory from {alloc[0]} to {alloc[1]} allocated")
+            print ('Memory from %d to %d allocated' %(alloc[0], alloc[1]))
     
     else:
         dealloc = dellocate(memory, alloc_mmr, i[1])
         if dealloc == -1:
-            print("Sorry, invalid free request")
+            print ('Sorry, invalid free request')
         else:
-            print(f"Memory block from {dealloc[0]} to {dealloc[1]} freed")
-            
-            adrs = 0
-            for j in range(0, len(memory)-1):
-                if memory[j][1] == memory[j+1][1] and memory[j][0] == 1 and memory[j+1][0] == 1:
-                    print(f"Coalescing of blocks starting at {adrs} and { adrs + memory[j][1] } was done")
-                    coalesce(memory, j)
-                    break
-                adrs+=memory[j][1]
-    print(alloc_mmr, memory)
+            print ('Memory block from %d to %d freed' %(dealloc[0], dealloc[1]))
+            coal = coalesce()
+    #print(alloc_mmr, memory)
